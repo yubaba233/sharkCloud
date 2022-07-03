@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.shark.common.security.config.WebMvcConfig,\
+  org.shark.common.security.service.TokenService,\
+  org.shark.common.security.aspect.PreAuthorizeAspect,\
+  org.shark.common.security.aspect.InnerAuthAspect,\
+  org.shark.common.security.handler.GlobalExceptionHandler
+

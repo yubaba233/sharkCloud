@@ -1,20 +1,19 @@
 package org.shark.ware;
 
 
-import org.mybatis.spring.annotation.MapperScan;
+import org.shark.common.security.annotation.EnableCustomConfig;
+import org.shark.common.security.annotation.EnableRyFeignClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * 网关启动程序
  * 
- * @author ruoyi
+ * @author Acer
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-@EnableFeignClients(basePackages = "org.shark.ware.controller")
-@MapperScan("org.shark.ware.mapper")
+@EnableCustomConfig
+@EnableRyFeignClients
+@SpringBootApplication
 public class SharkWareApplication
 {
     public static void main(String[] args) {

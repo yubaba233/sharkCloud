@@ -11,23 +11,9 @@
     <artifactId>shark-api-system</artifactId>
 
     <dependencies>
-        <!-- SpringCloud Openfeign -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <groupId>org.shark</groupId>
+            <artifactId>shark-common-core</artifactId>
         </dependency>
-
-        <!-- SpringCloud Loadbalancer -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-
-        <!-- Spring Context Support -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-        </dependency>
-
     </dependencies>
 </project>

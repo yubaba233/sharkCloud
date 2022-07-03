@@ -1,20 +1,20 @@
 package org.shark.system;
 
 
-import org.mybatis.spring.annotation.MapperScan;
+import org.shark.common.security.annotation.EnableCustomConfig;
+import org.shark.common.security.annotation.EnableRyFeignClients;
+import org.shark.common.swagger.annotation.EnableCustomSwagger2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+
 
 /**
- * 网关启动程序
- * 
- * @author ruoyi
+ * @author Acer
  */
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
-@EnableFeignClients(basePackages = "org.shark.system.controller")
-@MapperScan("org.shark.system.mapper")
+@EnableCustomConfig
+@EnableCustomSwagger2
+@EnableRyFeignClients
+@SpringBootApplication
 public class SharkSystemApplication
 {
     public static void main(String[] args) {

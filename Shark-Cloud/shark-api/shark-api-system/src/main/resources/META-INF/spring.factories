@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  org.shark.system.api.factory.RemoteSystemFallbackFactory
+  org.shark.system.api.factory.RemoteUserFallbackFactory,\
+  org.shark.system.api.factory.RemoteLogFallbackFactory, \
+  org.shark.system.api.factory.RemoteFileFallbackFactory

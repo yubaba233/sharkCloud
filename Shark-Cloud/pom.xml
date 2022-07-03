@@ -13,6 +13,9 @@
         <module>shark-product</module>
         <module>shark-ware</module>
         <module>shark-member</module>
+        <module>shark-auth</module>
+        <module>shark-file</module>
+        <module>shark-job</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -26,13 +29,14 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <spring-boot.version>2.6.7</spring-boot.version>
+        <spring-boot.version>2.6.8</spring-boot.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+        <alibaba.seata.version>1.5.1</alibaba.seata.version>
         <spring-boot.mybatis>2.2.0</spring-boot.mybatis>
-        <pagehelper.boot.version>1.4.0</pagehelper.boot.version>
-        <druid.version>1.2.9</druid.version>
+        <pagehelper.boot.version>1.4.2</pagehelper.boot.version>
+        <druid.version>1.2.11</druid.version>
         <commons.io.version>2.11.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <fastjson.version>2.0.6</fastjson.version>
@@ -40,6 +44,18 @@
         <common-pool.version>2.10.0</common-pool.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
+        <hutool.version>5.8.4</hutool.version>
+        <dynamic-ds.version>3.5.1</dynamic-ds.version>
+        <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
+        <tobato.version>1.27.2</tobato.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <swagger.fox.version>3.0.0</swagger.fox.version>
+        <swagger.core.version>1.6.2</swagger.core.version>
+        <velocity.version>2.3</velocity.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <spring-boot-admin.version>2.6.7</spring-boot-admin.version>
+        <minio.version>8.2.2</minio.version>
+        <redisson.version>3.17.4</redisson.version>
         <shark.version>1.0-SNAPSHOT</shark.version>
     </properties>
     <!-- 依赖声明 -->
@@ -70,6 +86,13 @@
                 <version>${alibaba.nacos.version}</version>
             </dependency>
 
+            <!-- Alibaba Seata 配置 -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${alibaba.seata.version}</version>
+            </dependency>
+
             <!-- SpringBoot 依赖配置 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -79,11 +102,42 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- FastDFS 分布式文件系统 -->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${tobato.version}</version>
+            </dependency>
+
             <!-- Mybatis 依赖配置 -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${spring-boot.mybatis}</version>
+            </dependency>
+            <!-- hutool -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!-- Swagger 依赖配置 -->
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
             </dependency>
 
             <!-- pagehelper 分页插件 -->
@@ -114,6 +168,13 @@
                 <version>${commons.fileupload.version}</version>
             </dependency>
 
+            <!-- 代码生成使用模板 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
             <!-- Collection 增强Java集合框架 -->
             <dependency>
                 <groupId>commons-collections</groupId>
@@ -128,23 +189,24 @@
                 <version>${fastjson.version}</version>
             </dependency>
 
-            <!-- 公共资源池 -->
+            <!-- JWT -->
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-pool2</artifactId>
-                <version>${common-pool.version}</version>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- 线程传递值 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable-thread-local.version}</version>
             </dependency>
             <!--mybatis-plus-->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
-            </dependency>
-            <!-- druid -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
             </dependency>
             <!--shark-->
             <dependency>
@@ -157,7 +219,39 @@
                 <artifactId>shark-common-redis</artifactId>
                 <version>${shark.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.shark</groupId>
+                <artifactId>shark-common-core</artifactId>
+                <version>${shark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.shark</groupId>
+                <artifactId>shark-common-datasource</artifactId>
+                <version>${shark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.shark</groupId>
+                <artifactId>shark-common-datascope</artifactId>
+                <version>${shark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.shark</groupId>
+                <artifactId>shark-common-security</artifactId>
+                <version>${shark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.shark</groupId>
+                <artifactId>shark-common-swagger</artifactId>
+                <version>${shark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.shark</groupId>
+                <artifactId>shark-common-log</artifactId>
+                <version>${shark.version}</version>
+            </dependency>
+
         </dependencies>
+
     </dependencyManagement>
 
     <dependencies>
@@ -166,15 +260,23 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.6.7</version>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>2.6.7</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>

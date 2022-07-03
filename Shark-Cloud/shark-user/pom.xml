@@ -38,29 +38,25 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!-- druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-        </dependency>
-        <!--mybatis-plus-->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-        <!-- SpringCloud Openfeign -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+
+        <!-- Common DataSource -->
         <dependency>
             <groupId>org.shark</groupId>
-            <artifactId>shark-api-system</artifactId>
+            <artifactId>shark-common-datasource</artifactId>
         </dependency>
+
+        <!-- Common DataScope -->
         <dependency>
             <groupId>org.shark</groupId>
-            <artifactId>shark-common-redis</artifactId>
+            <artifactId>shark-common-datascope</artifactId>
         </dependency>
+
+        <!-- Common Log -->
+        <dependency>
+            <groupId>org.shark</groupId>
+            <artifactId>shark-common-log</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

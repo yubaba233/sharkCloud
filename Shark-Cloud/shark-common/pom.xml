@@ -12,6 +12,12 @@
     <packaging>pom</packaging>
     <modules>
         <module>shark-common-redis</module>
+        <module>shark-common-security</module>
+        <module>shark-common-core</module>
+        <module>shark-common-datasource</module>
+        <module>shark-common-log</module>
+        <module>shark-common-datascope</module>
+        <module>shark-common-swagger</module>
     </modules>
 
 </project>

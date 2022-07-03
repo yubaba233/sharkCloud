@@ -1,6 +1,6 @@
 # Tomcat
 server:
-  port: 8082
+  port: 9001
 # Spring
 spring: 
   application:
@@ -10,6 +10,11 @@ spring:
     # 环境配置
     active: dev
   cloud:
+    loadbalancer:
+      cache:
+        enabled: true
+        caffeine:
+          spec: initialCapacity=500,expireAfterWrite=5s
     nacos:
       discovery:
         # 服务注册地址

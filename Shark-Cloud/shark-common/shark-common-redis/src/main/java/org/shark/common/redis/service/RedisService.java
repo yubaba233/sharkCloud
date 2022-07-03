@@ -12,16 +12,15 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * spring redis 工具类
- *
+ * 
  * @author Acer
- * */
+ **/
 @SuppressWarnings(value = { "unchecked", "rawtypes" })
 @Component
 public class RedisService
 {
     @Autowired
     public RedisTemplate redisTemplate;
-
     /**
      * 缓存基本的对象，Integer、String、实体类等
      *
@@ -242,7 +241,7 @@ public class RedisService
 
     /**
      * 获得缓存的基本对象列表
-     *
+     * 
      * @param pattern 字符串前缀
      * @return 对象列表
      */
