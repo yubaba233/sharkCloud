@@ -1,0 +1,16 @@
+package org.shark.product.mapper;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.shark.product.domain.entity.Product;
+
+/**
+ * <p>
+ * spu信息 Mapper 接口
+ * </p>
+ *
+ * @author yubaba
+ * @since 2022-07-10
+ */
+public interface ProductMapper extends BaseMapper<Product> {
+
+}

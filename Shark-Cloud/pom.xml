@@ -30,6 +30,9 @@
 
     <properties>
         <spring-boot.version>2.6.8</spring-boot.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
@@ -56,6 +59,7 @@
         <spring-boot-admin.version>2.6.7</spring-boot-admin.version>
         <minio.version>8.2.2</minio.version>
         <redisson.version>3.17.4</redisson.version>
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
         <shark.version>1.0-SNAPSHOT</shark.version>
     </properties>
     <!-- 依赖声明 -->
@@ -208,6 +212,17 @@
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+            <!--mapstruct编译-->
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct-processor</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
             <!--shark-->
             <dependency>
                 <groupId>org.shark</groupId>
@@ -249,7 +264,6 @@
                 <artifactId>shark-common-log</artifactId>
                 <version>${shark.version}</version>
             </dependency>
-
         </dependencies>
 
     </dependencyManagement>
@@ -269,6 +283,17 @@
     </dependencies>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
