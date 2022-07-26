@@ -26,9 +26,9 @@ import java.util.List;
  * @author yubaba
  * @since 2022-07-09
  */
-@RestController
+@RestController("appBrandController")
 @RequestMapping("/app/brand")
-public class AppBrandController extends BaseController {
+public class BrandController extends BaseController {
     /**
      * 获取品牌列表
      */

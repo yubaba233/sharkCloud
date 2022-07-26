@@ -1,8 +1,9 @@
 package org.shark.product.controller.admin;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.shark.common.core.utils.bean.BeanUtils;
+import ma.glasnost.orika.MapperFacade;
 import org.shark.common.core.web.controller.BaseController;
 import org.shark.common.core.web.domain.AjaxResult;
 import org.shark.common.log.annotation.Log;
@@ -22,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2022-07-06
  */
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/admin/category")
 public class CategoryController extends BaseController {
 
     /**
@@ -30,6 +31,8 @@ public class CategoryController extends BaseController {
      */
     @Autowired
     private ICategoryService iCategoryService;
+    @Autowired
+    private MapperFacade mapperFacade;
 
     @GetMapping("/getTree")
     public AjaxResult list(@RequestParam(value = "status",required = false) String status) {
@@ -50,8 +53,7 @@ public class CategoryController extends BaseController {
     @Log(title = "分类管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody CategoryDto categoryDto) {
-        Category category = new Category();
-        BeanUtils.copyProperties(categoryDto, category);
+        Category category = mapperFacade.map(categoryDto,Category.class);
         return toAjax(iCategoryService.save(category));
     }
 
@@ -61,8 +63,7 @@ public class CategoryController extends BaseController {
     @Log(title = "分类管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody CategoryDto categoryDto) {
-        Category category = new Category();
-        BeanUtils.copyProperties(categoryDto, category);
+        Category category = mapperFacade.map(categoryDto,Category.class);
         return toAjax(iCategoryService.updateById(category));
     }
 
@@ -81,4 +82,12 @@ public class CategoryController extends BaseController {
         }
         return error("请先删除子分类");
     }
+    @GetMapping("/getCateByPId")
+    public AjaxResult getCateByPId(@RequestParam(value = "parentId") String parentId) {
+        LambdaQueryWrapper<Category> queryWrapper=new QueryWrapper<Category>()
+                .lambda()
+                .eq(Category::getParentId,parentId);
+        return AjaxResult.success(iCategoryService.list(queryWrapper));
+    }
+
 }
