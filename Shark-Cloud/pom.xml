@@ -60,7 +60,6 @@
         <minio.version>8.2.2</minio.version>
         <redisson.version>3.17.4</redisson.version>
         <mapstruct.version>1.4.1.Final</mapstruct.version>
-        <orika.version>1.5.4</orika.version>
         <shark.version>1.0-SNAPSHOT</shark.version>
     </properties>
     <!-- 依赖声明 -->
@@ -223,11 +222,6 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ma.glasnost.orika</groupId>
-                <artifactId>orika-core</artifactId>
-                <version>${orika.version}</version>
             </dependency>
             <!--shark-->
             <dependency>
