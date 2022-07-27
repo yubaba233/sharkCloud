@@ -18,6 +18,7 @@
         <module>shark-common-log</module>
         <module>shark-common-datascope</module>
         <module>shark-common-swagger</module>
+        <module>shark-common-mq</module>
     </modules>
 
 </project>
